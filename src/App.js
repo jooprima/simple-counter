@@ -15,6 +15,25 @@ function App() {
     { title: "gula", count: 1 },
   ]);
 
+  //fungsi
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const addedTodos = [
+      ...todos,
+      {
+        title: value,
+        count: 1,
+      },
+    ];
+
+    setTodos(addedTodos);
+  };
+
+  console.log(value);
+  console.log(todos);
+
+  //fungsi menambahkan counter
   const handleAdditionCount = (index) => {
     const newTodos = [...todos];
 
@@ -23,6 +42,7 @@ function App() {
     setTodos(newTodos);
   };
 
+  //fungsi mengurangi counter
   const handleSubstractionCount = (index) => {
     const newTodos = [...todos];
 
@@ -39,7 +59,7 @@ function App() {
       </nav>
 
       <section className="container">
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit}>
           <input
             onChange={(e) => {
               setValue(e.target.value);
