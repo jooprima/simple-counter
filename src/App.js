@@ -19,6 +19,11 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!value) {
+      alert("No blank list!");
+      return;
+    }
+
     const addedTodos = [
       ...todos,
       {
@@ -28,10 +33,8 @@ function App() {
     ];
 
     setTodos(addedTodos);
+    setValue("");
   };
-
-  console.log(value);
-  console.log(todos);
 
   //fungsi menambahkan counter
   const handleAdditionCount = (index) => {
