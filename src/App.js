@@ -6,6 +6,7 @@ import minusIcon from "./assets/minus-icon.svg";
 import "./App.css";
 import Navbar from "./components/Navbar/index";
 import Container from "./components/Container";
+import SearchInput from "./components/SearchInput";
 
 function App() {
   const [value, setValue] = useState("");
@@ -75,20 +76,11 @@ function App() {
       <Navbar />
 
       <Container>
-        <form className="form" onSubmit={handleSubmit}>
-          <input
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
-            value={value}
-            className="input"
-            type="text"
-            placeholder="list"
-          />
-          <button className="add-button" type="submit">
-            add
-          </button>
-        </form>
+        <SearchInput
+          onSubmit={handleSubmit}
+          onChange={(e) => setValue(e.target.value)}
+          value={value}
+        />
 
         <div className="info">
           <div className="info-total">
