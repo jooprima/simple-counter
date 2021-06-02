@@ -45,6 +45,14 @@ function App() {
     setTodos(newTodos);
   };
 
+  //method todos dari state reduce
+  const getTotalCounts = () => {
+    const totalCounts = todos.reduce((total, num) => {
+      return total + num.count;
+    }, 0);
+    return totalCounts;
+  };
+
   //fungsi mengurangi counter
   const handleSubstractionCount = (index) => {
     const newTodos = [...todos];
@@ -58,8 +66,6 @@ function App() {
       // hapus array value dengan index yg sesuaui
       newTodos.splice(index, 1);
     }
-
-    newTodos[index].count = newTodos[index].count - 1;
 
     setTodos(newTodos);
   };
@@ -89,14 +95,16 @@ function App() {
 
         <div className="info">
           <div className="info-total">
-            <p>Total List</p>
+            <p>{`Total List: ${todos.length}`}</p>
           </div>
 
           <div className="info-total">
-            <p>Total List</p>
+            <p>{`Total Counts: ${getTotalCounts()}`}</p>
           </div>
 
-          <button className="delete-all-button">Delete All List</button>
+          <button onClick={() => setTodos([])} className="delete-all-button">
+            Delete All List
+          </button>
         </div>
 
         {todos.length > 0 ? (
